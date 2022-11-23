@@ -35,6 +35,7 @@ const getters = {
             a.createdAt.getMilliseconds() - b.createdAt.getMilliseconds())
 }
 
+//
 // const actions = {
 //     add(partialTodo: TodoAdd) {
 //         const todo: Todo = {
@@ -65,7 +66,7 @@ export const useTodoStore = defineStore('todoStore', {
         remove(id: string) {
             this.items = this.items.filter(todo => todo.id !== id)
         },
-        // TODO { ...item, ...update, updatedAt: new Date() } ?
+        // UNDERSTAND { ...item, ...update, updatedAt: new Date() } ?
         update(id: string, update: TodoUpdate) {
             this.items = this.items.map(item =>
                 item.id === id ? { ...item, ...update, updatedAt: new Date() } : item)
