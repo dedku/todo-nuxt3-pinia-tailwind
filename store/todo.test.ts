@@ -16,7 +16,7 @@ describe('Store tests', () => {
     })
 
     afterEach(() => {
-        store.$reset()
+        store.items = []
     })
 
     const testItems = [
@@ -25,28 +25,28 @@ describe('Store tests', () => {
             title: 'Test One',
             done: false,
             createdAt: new Date(2021, 1, 8),
-            updatedAt: new Date(),
+            updatedAt: null,
         },
         {
             id: '2',
             title: 'Test Two',
             done: false,
             createdAt: new Date(2022, 11, 11),
-            updatedAt: new Date(),
+            updatedAt: null,
         },
         {
             id: '3',
             title: 'Test Three',
             done: false,
             createdAt: new Date(2017, 4, 28),
-            updatedAt: new Date(),
+            updatedAt: null,
         },
         {
             id: '4',
             title: 'Test Four',
             done: false,
             createdAt: new Date(2019, 7, 3),
-            updatedAt: new Date(),
+            updatedAt: null,
         },
     ]
 
@@ -78,7 +78,36 @@ describe('Store tests', () => {
             expect(orderedTodos[2].createdAt.getFullYear()).toBe(2021)
         })
         test('Getters DOES NOT mutate the state', () => {
-            const newStore = testItems
+            const newStore = [
+                {
+                    id: '1',
+                    title: 'Test One',
+                    done: false,
+                    createdAt: new Date(2021, 1, 8),
+                    updatedAt: null,
+                },
+                {
+                    id: '2',
+                    title: 'Test Two',
+                    done: false,
+                    createdAt: new Date(2022, 11, 11),
+                    updatedAt: null,
+                },
+                {
+                    id: '3',
+                    title: 'Test Three',
+                    done: false,
+                    createdAt: new Date(2017, 4, 28),
+                    updatedAt: null,
+                },
+                {
+                    id: '4',
+                    title: 'Test Four',
+                    done: false,
+                    createdAt: new Date(2019, 7, 3),
+                    updatedAt: null,
+                },
+            ]
 
             expect(store.items).toStrictEqual(newStore)
         })
@@ -88,7 +117,7 @@ describe('Store tests', () => {
         test('Todo is created', () => {
             store.add({ title: 'Test code' })
             const addedItem = store.items.find(item => item.title === 'Test code')
-            expect(addedItem).toBeDefined()
+            expect(addedItem).toBeTruthy()
             expect(addedItem!.title).toBe('Test code')
         })
 

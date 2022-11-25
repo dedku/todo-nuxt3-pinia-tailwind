@@ -7,7 +7,7 @@ export interface Todo {
     title: string,
     done: boolean,
     createdAt: Date,
-    updatedAt: Date,
+    updatedAt: Date | null,
 }
 
 export interface TodoAdd {
