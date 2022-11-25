@@ -48,12 +48,13 @@ export const useTodoStore = defineStore('todoStore', {
                 createdAt: new Date(),
                 updatedAt: new Date()
             }
+            // FIXME remove push !
             this.items.push(todo)
         },
         remove(id: string) {
             this.items = this.items.filter(todo => todo.id !== id)
         },
-        // UNDERSTAND { ...item, ...update, updatedAt: new Date() } ?
+
         update(id: string, update: TodoUpdate) {
             this.items = this.items.map(item =>
                 item.id === id ? { ...item, ...update, updatedAt: new Date() } : item)

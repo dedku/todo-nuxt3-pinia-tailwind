@@ -117,6 +117,7 @@ describe('Store tests', () => {
         test('Todo is created', () => {
             store.add({ title: 'Test code' })
             const addedItem = store.items.find(item => item.title === 'Test code')
+
             expect(addedItem).toBeTruthy()
             expect(addedItem!.title).toBe('Test code')
         })
@@ -126,7 +127,6 @@ describe('Store tests', () => {
             store.remove('2')
             store.remove('3')
 
-            expect(store.items.length).toBe(2)
             expect(store.items[0].id).toBe('4')
         })
 
